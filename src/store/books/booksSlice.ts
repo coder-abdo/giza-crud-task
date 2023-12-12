@@ -1,5 +1,5 @@
 import { BooksState } from "@/types";
-import { retrieveBooks } from "@/utils";
+import { addBook, retrieveBooks } from "@/utils";
 import { createSlice } from "@reduxjs/toolkit";
 
 
@@ -24,6 +24,15 @@ const booksSlice = createSlice({
     }).addCase(retrieveBooks.rejected, (state, action) => {
       state.isLoading = false;
       state.books = [];
+      state.error = action.error.message || "";
+    })
+    builder.addCase(addBook.pending, (state) => {
+      state.isLoading = true;
+    }).addCase(addBook.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.books.push(action.payload);
+    }).addCase(addBook.rejected, (state, action) => {
+      state.isLoading = false;
       state.error = action.error.message || "";
     })
   }
