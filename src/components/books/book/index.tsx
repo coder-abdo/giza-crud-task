@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { Button, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import type { Book as BookType } from '@/types'
 
 type Props = {
@@ -8,8 +8,12 @@ type Props = {
 }
 
 export const Book: FC<Props> = ({ book }) => {
+  const navigate = useNavigate()
+  const handleBookDetails = () => {
+    navigate(`/books/${book.id}`)
+  }
   return (
-    <Card style={{ maxWidth: '20rem' }}>
+    <Card style={{ maxWidth: '20rem', cursor: "pointer" }} onClick={handleBookDetails}>
       <Card.Img variant="top" style={{
         height: '15rem',
       }} alt={book.title} src={book.image} />

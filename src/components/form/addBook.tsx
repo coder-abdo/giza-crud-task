@@ -3,11 +3,14 @@ import { useAppDispatch } from "@/hooks/redux.hooks"
 import { addBook } from "@/utils"
 import { bookSchema } from "@/utils/book.schema"
 import { Field, Formik, Form as FormkikForm } from "formik"
+import { useState } from "react"
 import { Button, Form } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 
 export const AddBook = () => {
   const dispatch = useAppDispatch()
-
+  const navigate = useNavigate()
+  const [err, setErr] = useState('')
   return (
     <Formik initialValues={{
       title: '',
@@ -17,7 +20,12 @@ export const AddBook = () => {
       validationSchema={bookSchema}
       onSubmit={values => {
         const book = { ...values, id: crypto.randomUUID(), image: 'https://picsum.photos/200/300' }
-        dispatch(addBook(book))
+        dispatch(addBook(book)).unwrap().then(() => {
+          navigate('/')
+        }).catch((err) => {
+          console.log(err)
+          setErr(err.message)
+        })
       }}
 
     >
@@ -43,6 +51,7 @@ export const AddBook = () => {
           type="submit">
           Submit
         </Button>
+        {err && <p className="text-danger my-2">{err}</p>}
       </Form>
       }
     </Formik>

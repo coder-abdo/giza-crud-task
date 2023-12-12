@@ -1,7 +1,7 @@
 import { Book } from "@/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-
+// get all books
 const retrieveBooks = createAsyncThunk('books/fetchBooks', async (_, { rejectWithValue }) => {
   try {
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/books`)
@@ -12,6 +12,18 @@ const retrieveBooks = createAsyncThunk('books/fetchBooks', async (_, { rejectWit
       return rejectWithValue(err.message)
   }
 })
+// get book by id
+const getBook = createAsyncThunk('books/getBook', async (id: string, { rejectWithValue }) => {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${id}`)
+    const data = await res.json()
+    return data;
+  } catch (err) {
+    if (err instanceof Error)
+      return rejectWithValue(err.message)
+  }
+})
+// add book
 const addBook = createAsyncThunk('books/addBook', async (item: Book, { rejectWithValue }) => {
   try {
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/books`, {
@@ -29,5 +41,9 @@ const addBook = createAsyncThunk('books/addBook', async (item: Book, { rejectWit
     }
   }
 })
-
-export { retrieveBooks, addBook }
+// updagte Book
+const updateBook = createAsyncThunk('books/updateBook', async (item: Book, { rejectWithValue }) => {
+  const { id } = item
+  console.log(id)
+})
+export { retrieveBooks, addBook, updateBook, getBook }

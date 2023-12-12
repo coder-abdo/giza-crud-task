@@ -8,6 +8,7 @@ interface Book {
 }
 type BooksState = {
   books: Book[];
+  book: Book | null;
   isLoading: boolean;
   error: string;
 }
