@@ -9,13 +9,12 @@ type Props = {
 
 export const Book: FC<Props> = ({ book }) => {
   return (
-    <Card style={{ width: '20rem' }}>
+    <Card style={{ maxWidth: '20rem' }}>
       <Card.Img variant="top" style={{
         height: '15rem',
       }} alt={book.title} src={book.image} />
       <Card.Body>
         <Card.Title
-          text='primary'
           style={{
             marginBottom: '0.5rem'
           }}>{book.title}</Card.Title>

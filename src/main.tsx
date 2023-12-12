@@ -8,6 +8,8 @@ import { Details } from '@/pages/details'
 import { Edit } from '@/pages/edit'
 import { ErrorPage } from '@/pages/404'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Provider } from 'react-redux'
+import { store } from '@/store'
 const router = createBrowserRouter([
   {
     path: '/', element: <Root />,
@@ -23,6 +25,9 @@ const router = createBrowserRouter([
 ])
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 )

@@ -1,4 +1,4 @@
-
+import { store } from '@/store'
 interface Book {
   id: string;
   title: string;
@@ -6,6 +6,12 @@ interface Book {
   image: string;
   author: string;
 }
+type BooksState = {
+  books: Book[];
+  isLoading: boolean;
+  error: string;
+}
+type RootState = ReturnType<typeof store.getState>
+type AppDispatch = typeof store.dispatch
 
-
-export type { Book };
+export type { Book, RootState, AppDispatch, BooksState }
