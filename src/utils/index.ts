@@ -44,6 +44,34 @@ const addBook = createAsyncThunk('books/addBook', async (item: Book, { rejectWit
 // updagte Book
 const updateBook = createAsyncThunk('books/updateBook', async (item: Book, { rejectWithValue }) => {
   const { id } = item
-  console.log(id)
+  try {
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(item),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8'
+      }
+    })
+    const data = await res.json()
+    return data;
+  } catch (err) {
+    if (err instanceof Error) {
+      return rejectWithValue(err.message)
+    }
+  }
 })
-export { retrieveBooks, addBook, updateBook, getBook }
+// delete book
+const deleteBook = createAsyncThunk('books/deleteBook', async (id: string, { rejectWithValue }) => {
+  try {
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${id}`, {
+      method: 'DELETE',
+    })
+    const data = await res.json()
+    return data
+  } catch (err) {
+    if (err instanceof Error) {
+      return rejectWithValue(err.message)
+    }
+  }
+})
+export { retrieveBooks, addBook, updateBook, getBook, deleteBook }

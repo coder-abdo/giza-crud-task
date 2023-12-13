@@ -1,30 +1,33 @@
-# React + TypeScript + Vite
+# Books Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+this is a simple books store app using react and redux-toolkit with the help of typescript and react-bootstrap.
 
-Currently, two official plugins are available:
+### Technologies:
+1. React.JS.
+2. Redux-toolkit.
+3. Typescript. 
+4. React-bootstrap.
+5. Formik.
+6. Yup.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### How to run the app:
+- Install dependencies:
+```bash
+bun install or `yarn install` or `npm install`
+```
+- Run the app:
+1. run the server:
+```bash
+bun backend or `yarn backend` or `npm backend`
+```
+2. run the app:
+```bash
+run `bun dev` or `yarn dev` or `npm dev`
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#### Note:
+- don't forget to run the server first.
+- the base `url` for the server is in the `.env` with name `VITE_BASE_URL` so make sure you add that file at the root of the app.
+
+

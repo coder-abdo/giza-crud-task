@@ -1,0 +1,46 @@
+{
+  "books": [
+    {
+      "id": "64ecf12d-e0c0-4d2e-a626-d61535f422d8",
+      "title": "The Fellowship of the Ring",
+      "description": "The first of three volumes of the epic novel The Lord of the Rings by the English author J. R. R. Tolkien.",
+      "author": "J. R. R. Tolkien",
+      "image": "https://picsum.photos/200/300"
+    },
+    {
+      "title": "The Two Towers",
+      "author": "J. R. R. Tolkien2",
+      "description": "The second volume of the novel The Lord of the Rings by J. R. R. Tolkien.",
+      "id": "85681c94-0adc-43d2-b796-1d49949111d4",
+      "image": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "118bb772-05d7-4c12-9562-b3a82185764f",
+      "title": "The Return of the King",
+      "description": "The third and final volume of J. R. R. Tolkien's The Lord of the Rings, following The Fellowship of the Ring and The Two Towers.",
+      "author": "J. R. R. Tolkien",
+      "image": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "5f2f330c-d9ee-4b0e-9439-cf79257abead",
+      "title": "The Hobbit",
+      "description": "The Hobbit, or There and Back Again is a children's fantasy novel by English author J. R. R. Tolkien.",
+      "author": "J. R. R. Tolkien",
+      "image": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "ecd4ac21-13f5-437f-840a-02d5f3b81638",
+      "title": "The Silmarillion",
+      "description": "The Silmarillion is a collection of mythopoeic works by English writer J. R. R. Tolkien, edited and published posthumously by his son, Christopher Tolkien, in 1977, with assistance from Guy Gavriel Kay.",
+      "author": "J. R. R. Tolkien",
+      "image": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "295f1e70-028b-4b7c-ad8f-f50d9df84ba1",
+      "title": "The Children of Húrin",
+      "description": "The Children of Húrin is an epic fantasy novel which forms the completion of a tale by J. R. R. Tolkien. He wrote the original version of the story in the late 1910s, revised it several times later, but did not complete it before his death in 1973.",
+      "author": "J. R. R. Tolkien",
+      "image": "https://picsum.photos/200/300"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { BooksState } from "@/types";
-import { addBook, getBook, retrieveBooks } from "@/utils";
+import { addBook, deleteBook, getBook, retrieveBooks, updateBook } from "@/utils";
 import { createSlice } from "@reduxjs/toolkit";
 
 
@@ -44,6 +44,26 @@ const booksSlice = createSlice({
       state.isLoading = false;
       state.books.push(action.payload);
     }).addCase(addBook.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message || "";
+    })
+    // update book
+    builder.addCase(updateBook.pending, (state) => {
+      state.isLoading = true;
+    }).addCase(updateBook.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.book = action.payload;
+    }).addCase(updateBook.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message || "";
+    })
+    // delete book
+    builder.addCase(deleteBook.pending, (state) => {
+      state.isLoading = true;
+    }).addCase(deleteBook.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.books = state.books.filter((book) => book.id !== action.payload);
+    }).addCase(deleteBook.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.error.message || "";
     })

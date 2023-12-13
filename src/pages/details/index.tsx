@@ -1,15 +1,23 @@
+import { useAppDispatch } from "@/hooks/redux.hooks"
 import { useBookDetails } from "@/hooks/useBookDetails"
+import { deleteBook } from "@/utils"
 import { Button, Spinner } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 
 export const Details = () => {
   const { book, error, isLoading } = useBookDetails()
+  const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const handleBack = () => {
     navigate('/')
   }
   const handleEdit = () => {
     navigate(`/books/${book!.id}/edit`)
+  }
+  const handleDelete = () => {
+    dispatch(deleteBook(book.id)).unwrap().then(() => {
+      navigate('/')
+    })
   }
   return (
     <main className="py-5">
@@ -31,7 +39,7 @@ export const Details = () => {
               onClick={handleEdit}
               role="link"
               aria-label="edit book">Edit</Button>
-            <Button variant="danger" role="button" aria-label="delete book">Delete</Button>
+            <Button variant="danger" onClick={handleDelete} role="button" aria-label="delete book">Delete</Button>
           </div>
 
         </>

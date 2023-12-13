@@ -1,7 +1,9 @@
-import type { FC } from 'react'
+import { useCallback, type FC } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import type { Book as BookType } from '@/types'
+import { useAppDispatch } from '@/hooks/redux.hooks'
+import { deleteBook, retrieveBooks } from '@/utils'
 
 type Props = {
   book: BookType
@@ -9,11 +11,21 @@ type Props = {
 
 export const Book: FC<Props> = ({ book }) => {
   const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  const handleDelete = useCallback(() => {
+    dispatch(deleteBook(book.id)).unwrap().then(() => {
+      dispatch(retrieveBooks())
+    })
+  }, [book.id, dispatch])
+
   const handleBookDetails = () => {
     navigate(`/books/${book.id}`)
   }
+  const handleEditBook = () => {
+    navigate(`/books/${book.id}/edit`)
+  }
   return (
-    <Card style={{ maxWidth: '20rem', cursor: "pointer" }} onClick={handleBookDetails}>
+    <Card style={{ maxWidth: '20rem' }}>
       <Card.Img variant="top" style={{
         height: '15rem',
       }} alt={book.title} src={book.image} />
@@ -27,18 +39,21 @@ export const Book: FC<Props> = ({ book }) => {
       </Card.Body>
       <Card.Footer style={{
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        gap: '0.5rem'
       }}>
-        <Button variant='secondary' role='link' aria-label='edit book'>
-          <Link to={`/books/${book.id}/edit`} style={{
-            textDecoration: 'none',
-            color: 'white'
-          }}>
-            Edit
-          </Link>
+        <Button
+          onClick={handleEditBook}
+          variant='secondary' role='link' aria-label='edit book'>
+          Edit
         </Button>
-        <Button variant='danger'>Delete</Button>
+        <Button
+          onClick={handleBookDetails}
+          variant='info' role='link' aria-label='book details'>
+          Details
+        </Button>
+        <Button variant='danger' onClick={handleDelete}>Delete</Button>
       </Card.Footer>
-    </Card>
+    </Card >
   )
 }
