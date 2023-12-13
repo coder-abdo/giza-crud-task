@@ -15,7 +15,7 @@ export const Details = () => {
     navigate(`/books/${book!.id}/edit`)
   }
   const handleDelete = () => {
-    dispatch(deleteBook(book.id)).unwrap().then(() => {
+    dispatch(deleteBook(book!.id)).unwrap().then(() => {
       navigate('/')
     })
   }

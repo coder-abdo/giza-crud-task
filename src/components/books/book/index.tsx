@@ -1,6 +1,6 @@
 import { useCallback, type FC } from 'react'
 import { Button, Card } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import type { Book as BookType } from '@/types'
 import { useAppDispatch } from '@/hooks/redux.hooks'
 import { deleteBook, retrieveBooks } from '@/utils'
