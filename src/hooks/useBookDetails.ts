@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "@/hooks/redux.hooks";
 import { getBook } from "@/utils";
 import { useEffect } from "react";
 
-
 export const useBookDetails = () => {
   const { id } = useParams();
   const { error, isLoading, book } = useAppSelector((state) => state.books);
@@ -12,4 +11,4 @@ export const useBookDetails = () => {
     dispatch(getBook(id!));
   }, [dispatch, id]);
   return { error, isLoading, book };
-}
+};
